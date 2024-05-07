@@ -10,18 +10,19 @@ import Contact from "./routes/contact";
 
 const router = createBrowserRouter([
   {
-    path: "/", 
+    path: "/",
     element: <Root />,
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "contacts/:contactId",
+        element: <Contact />,
+      },
+    ],
   },
-  {
-    path: "/contacts/:contactId",
-    element: <Contact />,
-    errorElement: <ErrorPage />
-  }
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>
